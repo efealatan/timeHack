@@ -31,8 +31,22 @@ angular.module('starter.controllers', [])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                            $scope.id = data.article.id;
+                            $scope.similarId = data.article.article1;
+                            $scope.lessSimilarId = data.article.article2;
+                            $scope.wildCardId = data.article.article3;
                     });
             });
+                $scope.getArticle = function(id){
+                    $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                success(function(data){
+                        $scope.article = data.article.content;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
+                        });
+                };
 
     })
 
