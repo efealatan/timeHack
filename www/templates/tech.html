@@ -9,12 +9,12 @@
 
     <ion-footer-bar align-title="left" class="bar-assertive">
         <div class="button-bar">
+ 
+            <button class="button button-clear icon ion-ios7-circle-filled" ng-click="getArticle(similarId)"></button>
 
-            <button class="button button-clear icon ion-ios7-circle-filled"></button>
+            <button class="button button-clear icon ion-ios7-circle-outline" ng-click="getArticle(lessSimilarId)"></button>
 
-            <button class="button button-clear icon ion-ios7-circle-outline"></button>
-
-            <button class="button button-clear icon ion-ios7-close-outline"></button>
+            <button class="button button-clear icon ion-ios7-close-outline" ng-click="getArticle(wildCardId)"></button>
 
         </div>
     </ion-footer-bar>
