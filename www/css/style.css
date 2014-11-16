@@ -1,1 +1,11 @@
 /* Empty. Add your own CSS if you like */
+body{
+    font-family: "Helvetica";
+    color: black;
+
+}
+
+h3{
+    font-style: oblique;
+
+}
