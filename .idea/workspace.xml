@@ -57,8 +57,8 @@
       <file leaf-file-name="business.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/templates/business.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28089887" vertical-offset="0" max-vertical-offset="801">
-              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.39325842" vertical-offset="0" max-vertical-offset="801">
+              <caret line="21" column="68" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -462,8 +462,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/business.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28089887" vertical-offset="0" max-vertical-offset="801">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.39325842" vertical-offset="0" max-vertical-offset="801">
+          <caret line="21" column="68" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
           <folding />
         </state>
       </provider>
