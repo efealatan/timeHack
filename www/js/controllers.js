@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $cordovaLocalNotification) {
         ////////////SETTINGS MODAL///////////////////////////
         // Create the settings modal that we will use later
         $ionicModal.fromTemplateUrl('templates/settings.html', {
@@ -19,6 +19,10 @@ angular.module('starter.controllers', [])
         $scope.closeSettings = function() {
             $scope.modal.hide();
         };
+
+        $scope.$on('onReminderAdded', function(event, id, state, json) {
+            console.log('notification ADDED, id: ' + id  + ' state:' + state + ' json:' + json );
+        });
 })
 
     .controller('BusinessCtrl', function($scope, $stateParams, $http) {
@@ -33,6 +37,15 @@ angular.module('starter.controllers', [])
                         $scope.article = data.article.content;
                         $scope.title = data.article.short_title;
                     });
+            });
+
+        $scope.addNotification = function(tit, msg) {
+            window.plugin.notification.local.add({
+                id: 'MYLN',
+                title:   tit,
+                message: msg,
+                icon:      'ic_notification',
+                smallIcon: 'ic_notification_small',
             });
 
     })
@@ -120,3 +133,4 @@ angular.module('starter.controllers', [])
                     });
             });
     })
+
