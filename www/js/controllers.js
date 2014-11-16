@@ -1,36 +1,24 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-  // Form data for the login modal
-  $scope.loginData = {};
+        ////////////SETTINGS MODAL///////////////////////////
+        // Create the settings modal that we will use later
+        $ionicModal.fromTemplateUrl('templates/settings.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+        //open the settings modal
+        $scope.openSettings = function() {
+            $scope.modal.show();
+        };
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
+        // Triggered in the settings modal to close it
+        $scope.closeSettings = function() {
+            $scope.modal.hide();
+        };
 })
 
 .controller('BusinessCtrl', function($scope) {
@@ -64,3 +52,68 @@ angular.module('starter.controllers', [])
 
     .controller('ScienceCtrl', function($scope, $stateParams) {
     })
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//LOCAL NOTIFICATION
+
+.controller('NotificationCtrl', function($scope, $cordovaLocalNotification) {
+
+    $scope.addNotification = function () {
+        $cordovaLocalNotification.add({
+            id: 'some_notification_id'
+            // parameter documentation:
+            // https://github.com/katzer/cordova-plugin-local-notifications#further-informations-1
+        }).then(function () {
+            console.log('callback for adding background notification');
+        });
+    };
+
+    $scope.cancelNotification = function () {
+        $cordovaLocalNotification.cancel('some_notification_id').then(function () {
+            console.log('callback for cancellation background notification');
+        });
+    };
+
+    $scope.cancelAllNotification = function () {
+        $cordovaLocalNotification.cancelAll().then(function () {
+            console.log('callback for canceling all background notifications');
+        });
+    };
+
+    $scope.checkIfIsScheduled = function () {
+        $cordovaLocalNotification.isScheduled('some_notification_id').then(function (isScheduled) {
+            console.log(isScheduled);
+        });
+    };
+
+    $scope.getNotificationIds = function () {
+        $cordovaLocalNotification.getScheduledIds().then(function (scheduledIds) {
+            console.log(scheduledIds);
+        });
+    };
+
+    $scope.checkIfIsTriggered = function () {
+        $cordovaLocalNotification.isTriggered('some_notification_id').then(function (isTriggered) {
+            console.log(isTriggered);
+        });
+    };
+
+    $scope.getTriggeredIds = function () {
+        $cordovaLocalNotification.getTriggeredIds().then(function (triggeredIds) {
+            console.log(triggeredIds);
+        });
+    };
+
+    $scope.notificationDefaults = $cordovaLocalNotification.getDefaults();
+
+    $scope.setDefaultOptions = function () {
+        $cordovaLocalNotification.setDefaults({ autoCancel: true });
+    };
+
+    // event callbacks events `onadd`, `ontrigger`, `onclick` and `oncancel`
+    // can be assigned like this:
+    $cordovaLocalNotification.onadd = function (id, state, json) {};
+
+});
+
