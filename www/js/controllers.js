@@ -21,99 +21,95 @@ angular.module('starter.controllers', [])
         };
 })
 
-.controller('BusinessCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
+    .controller('BusinessCtrl', function($scope, $stateParams, $http) {
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-})
+        var id;
 
-.controller('TechCtrl', function($scope, $stateParams) {
-})
+        $http.get("http://magazinr.herokuapp.com/articles/section/business").
+            success(function(data) {
+                id = data.articles[0].id;
+                $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                        $scope.article = data.article.content;
+                    });
+            });
 
-    .controller('EntertainmentCtrl', function($scope, $stateParams) {
     })
 
-    .controller('PoliticsCtrl', function($scope, $stateParams) {
+    .controller('TechCtrl', function($scope, $stateParams, $http) {
+        var id;
+
+        $http.get("http://magazinr.herokuapp.com/articles/section/tech").
+            success(function(data) {
+                id = data.articles[0].id;
+                $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                        $scope.article = data.article.content;
+                    });
+            });
     })
 
-    .controller('SportsCtrl', function($scope, $stateParams) {
+    .controller('EntertainmentCtrl', function($scope, $stateParams, $http) {
+        var id;
+
+        $http.get("http://magazinr.herokuapp.com/articles/section/entertainment").
+            success(function(data) {
+                id = data.articles[0].id;
+                $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                        $scope.article = data.article.content;
+                    });
+            });
     })
 
-    .controller('WorldCtrl', function($scope, $stateParams) {
+    .controller('PoliticsCtrl', function($scope, $stateParams, $http) {
+        var id;
+
+        $http.get("http://magazinr.herokuapp.com/articles/section/politics").
+            success(function(data) {
+                id = data.articles[0].id;
+                $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                        $scope.article = data.article.content;
+                    });
+            });
     })
 
-    .controller('ScienceCtrl', function($scope, $stateParams) {
+    .controller('SportsCtrl', function($scope, $stateParams, $http) {
+        var id;
+
+        $http.get("http://magazinr.herokuapp.com/articles/section/sports").
+            success(function(data) {
+                id = data.articles[0].id;
+                $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                        $scope.article = data.article.content;
+                    });
+            });
     })
 
+    .controller('WorldCtrl', function($scope, $stateParams, $http) {
+        var id;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-//LOCAL NOTIFICATION
+        $http.get("http://magazinr.herokuapp.com/articles/section/world").
+            success(function(data) {
+                id = data.articles[0].id;
+                $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                        $scope.article = data.article.content;
+                    });
+            });
+    })
 
-.controller('NotificationCtrl', function($scope, $cordovaLocalNotification) {
+    .controller('ScienceCtrl', function($scope, $stateParams, $http) {
+        var id;
 
-    $scope.addNotification = function () {
-        $cordovaLocalNotification.add({
-            id: 'some_notification_id'
-            // parameter documentation:
-            // https://github.com/katzer/cordova-plugin-local-notifications#further-informations-1
-        }).then(function () {
-            console.log('callback for adding background notification');
-        });
-    };
-
-    $scope.cancelNotification = function () {
-        $cordovaLocalNotification.cancel('some_notification_id').then(function () {
-            console.log('callback for cancellation background notification');
-        });
-    };
-
-    $scope.cancelAllNotification = function () {
-        $cordovaLocalNotification.cancelAll().then(function () {
-            console.log('callback for canceling all background notifications');
-        });
-    };
-
-    $scope.checkIfIsScheduled = function () {
-        $cordovaLocalNotification.isScheduled('some_notification_id').then(function (isScheduled) {
-            console.log(isScheduled);
-        });
-    };
-
-    $scope.getNotificationIds = function () {
-        $cordovaLocalNotification.getScheduledIds().then(function (scheduledIds) {
-            console.log(scheduledIds);
-        });
-    };
-
-    $scope.checkIfIsTriggered = function () {
-        $cordovaLocalNotification.isTriggered('some_notification_id').then(function (isTriggered) {
-            console.log(isTriggered);
-        });
-    };
-
-    $scope.getTriggeredIds = function () {
-        $cordovaLocalNotification.getTriggeredIds().then(function (triggeredIds) {
-            console.log(triggeredIds);
-        });
-    };
-
-    $scope.notificationDefaults = $cordovaLocalNotification.getDefaults();
-
-    $scope.setDefaultOptions = function () {
-        $cordovaLocalNotification.setDefaults({ autoCancel: true });
-    };
-
-    // event callbacks events `onadd`, `ontrigger`, `onclick` and `oncancel`
-    // can be assigned like this:
-    $cordovaLocalNotification.onadd = function (id, state, json) {};
-
-});
-
+        $http.get("http://magazinr.herokuapp.com/articles/section/science").
+            success(function(data) {
+                id = data.articles[0].id;
+                $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                        $scope.article = data.article.content;
+                    });
+            });
+    })
