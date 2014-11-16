@@ -31,10 +31,12 @@ angular.module('starter.controllers', [])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
-                            $scope.id = data.article.id;
-                            $scope.similarId = data.article.article1;
-                            $scope.lessSimilarId = data.article.article2;
-                            $scope.wildCardId = data.article.article3;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
+                        $scope.title = data.article.short_title;
+
                     });
             });
                 $scope.getArticle = function(id){
@@ -59,6 +61,7 @@ angular.module('starter.controllers', [])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.title = data.article.short_title;
                     });
             });
     })
@@ -72,6 +75,7 @@ angular.module('starter.controllers', [])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.title = data.article.short_title;
                     });
             });
     })
@@ -85,6 +89,7 @@ angular.module('starter.controllers', [])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.title = data.article.short_title;
                     });
             });
     })
@@ -98,6 +103,7 @@ angular.module('starter.controllers', [])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.title = data.article.short_title;
                     });
             });
     })
@@ -111,6 +117,7 @@ angular.module('starter.controllers', [])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.title = data.article.short_title;
                     });
             });
     })
@@ -124,6 +131,7 @@ angular.module('starter.controllers', [])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.title = data.article.short_title;
                     });
             });
     })
