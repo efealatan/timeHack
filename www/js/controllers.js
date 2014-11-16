@@ -33,34 +33,95 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('BusinessCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('BusinessCtrl', function($scope, $stateParams, $http) {
+            
+            var id;
+            
+            $http.get("http://magazinr.herokuapp.com/articles/section/business").
+            success(function(data) {
+                    id = data.articles[0].id;
+                    $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                            $scope.article = data.article.content;
+                            });
+                    });
+            
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('TechCtrl', function($scope, $stateParams, $http) {
+            var id;
+            
+            $http.get("http://magazinr.herokuapp.com/articles/section/tech").
+            success(function(data) {
+                    id = data.articles[0].id;
+                    $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                    success(function(data) {
+                            $scope.article = data.article.content;
+                            });
+                    });
 })
 
-.controller('TechCtrl', function($scope, $stateParams) {
-})
-
-    .controller('EntertainmentCtrl', function($scope, $stateParams) {
+    .controller('EntertainmentCtrl', function($scope, $stateParams, $http) {
+                var id;
+                
+                $http.get("http://magazinr.herokuapp.com/articles/section/entertainment").
+                success(function(data) {
+                        id = data.articles[0].id;
+                        $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                        success(function(data) {
+                                $scope.article = data.article.content;
+                                });
+                        });
     })
 
-    .controller('PoliticsCtrl', function($scope, $stateParams) {
+    .controller('PoliticsCtrl', function($scope, $stateParams, $http) {
+                var id;
+                
+                $http.get("http://magazinr.herokuapp.com/articles/section/politics").
+                success(function(data) {
+                        id = data.articles[0].id;
+                        $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                        success(function(data) {
+                                $scope.article = data.article.content;
+                                });
+                        });
     })
 
-    .controller('SportsCtrl', function($scope, $stateParams) {
+    .controller('SportsCtrl', function($scope, $stateParams, $http) {
+                var id;
+                
+                $http.get("http://magazinr.herokuapp.com/articles/section/sports").
+                success(function(data) {
+                        id = data.articles[0].id;
+                        $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                        success(function(data) {
+                                $scope.article = data.article.content;
+                                });
+                        });
     })
 
-    .controller('WorldCtrl', function($scope, $stateParams) {
+    .controller('WorldCtrl', function($scope, $stateParams, $http) {
+                var id;
+                
+                $http.get("http://magazinr.herokuapp.com/articles/section/world").
+                success(function(data) {
+                        id = data.articles[0].id;
+                        $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                        success(function(data) {
+                                $scope.article = data.article.content;
+                                });
+                        });
     })
 
-    .controller('ScienceCtrl', function($scope, $stateParams) {
+    .controller('ScienceCtrl', function($scope, $stateParams, $http) {
+                var id;
+                
+                $http.get("http://magazinr.herokuapp.com/articles/section/science").
+                success(function(data) {
+                        id = data.articles[0].id;
+                        $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                        success(function(data) {
+                                $scope.article = data.article.content;
+                                });
+                        });
     })
