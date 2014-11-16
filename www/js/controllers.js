@@ -1,6 +1,6 @@
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $cordovaLocalNotification) {
+    .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
         ////////////SETTINGS MODAL///////////////////////////
         // Create the settings modal that we will use later
         $ionicModal.fromTemplateUrl('templates/settings.html', {
@@ -19,11 +19,7 @@ angular.module('starter.controllers', ['ngCordova'])
         $scope.closeSettings = function() {
             $scope.modal.hide();
         };
-
-        $scope.$on('onReminderAdded', function(event, id, state, json) {
-            console.log('notification ADDED, id: ' + id  + ' state:' + state + ' json:' + json );
-        });
-})
+    })
 
     .controller('BusinessCtrl', function($scope, $stateParams, $http) {
 
@@ -35,18 +31,27 @@ angular.module('starter.controllers', ['ngCordova'])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
                         $scope.title = data.article.short_title;
+                        $scope.section = data.article.section;
+
                     });
             });
-
-        $scope.addNotification = function(tit, msg) {
-            window.plugin.notification.local.add({
-                id: 'MYLN',
-                title:   tit,
-                message: msg,
-                icon:      'ic_notification',
-                smallIcon: 'ic_notification_small',
-            });
+        $scope.getArticle = function(id){
+            $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                success(function(data){
+                    $scope.article = data.article.content;
+                    $scope.id = data.article.id;
+                    $scope.similarId = data.article.article1;
+                    $scope.lessSimilarId = data.article.article2;
+                    $scope.wildCardId = data.article.article3;
+                    $scope.title = data.article.short_title;
+                    $scope.section = data.article.section;
+                });
+        };
 
     })
 
@@ -59,9 +64,26 @@ angular.module('starter.controllers', ['ngCordova'])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
                         $scope.title = data.article.short_title;
+                        $scope.section = data.article.section;
                     });
             });
+        $scope.getArticle = function(id){
+            $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                success(function(data){
+                    $scope.article = data.article.content;
+                    $scope.id = data.article.id;
+                    $scope.similarId = data.article.article1;
+                    $scope.lessSimilarId = data.article.article2;
+                    $scope.wildCardId = data.article.article3;
+                    $scope.title = data.article.short_title;
+                    $scope.section = data.article.section;
+                });
+        };
     })
 
     .controller('EntertainmentCtrl', function($scope, $stateParams, $http) {
@@ -73,9 +95,26 @@ angular.module('starter.controllers', ['ngCordova'])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
                         $scope.title = data.article.short_title;
+                        $scope.section = data.article.section;
                     });
             });
+        $scope.getArticle = function(id){
+            $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                success(function(data){
+                    $scope.article = data.article.content;
+                    $scope.id = data.article.id;
+                    $scope.similarId = data.article.article1;
+                    $scope.lessSimilarId = data.article.article2;
+                    $scope.wildCardId = data.article.article3;
+                    $scope.title = data.article.short_title;
+                    $scope.section = data.article.section;
+                });
+        };
     })
 
     .controller('PoliticsCtrl', function($scope, $stateParams, $http) {
@@ -87,9 +126,26 @@ angular.module('starter.controllers', ['ngCordova'])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
                         $scope.title = data.article.short_title;
+                        $scope.section = data.article.section;
                     });
             });
+        $scope.getArticle = function(id){
+            $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                success(function(data){
+                    $scope.article = data.article.content;
+                    $scope.id = data.article.id;
+                    $scope.similarId = data.article.article1;
+                    $scope.lessSimilarId = data.article.article2;
+                    $scope.wildCardId = data.article.article3;
+                    $scope.title = data.article.short_title;
+                    $scope.section = data.article.section;
+                });
+        };
     })
 
     .controller('SportsCtrl', function($scope, $stateParams, $http) {
@@ -101,9 +157,26 @@ angular.module('starter.controllers', ['ngCordova'])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
                         $scope.title = data.article.short_title;
+                        $scope.section = data.article.section;
                     });
             });
+        $scope.getArticle = function(id){
+            $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                success(function(data){
+                    $scope.article = data.article.content;
+                    $scope.id = data.article.id;
+                    $scope.similarId = data.article.article1;
+                    $scope.lessSimilarId = data.article.article2;
+                    $scope.wildCardId = data.article.article3;
+                    $scope.title = data.article.short_title;
+                    $scope.section = data.article.section;
+                });
+        };
     })
 
     .controller('WorldCtrl', function($scope, $stateParams, $http) {
@@ -115,9 +188,26 @@ angular.module('starter.controllers', ['ngCordova'])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
                         $scope.title = data.article.short_title;
+                        $scope.section = data.article.section;
                     });
             });
+        $scope.getArticle = function(id){
+            $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                success(function(data){
+                    $scope.article = data.article.content;
+                    $scope.id = data.article.id;
+                    $scope.similarId = data.article.article1;
+                    $scope.lessSimilarId = data.article.article2;
+                    $scope.wildCardId = data.article.article3;
+                    $scope.title = data.article.short_title;
+                    $scope.section = data.article.section;
+                });
+        };
     })
 
     .controller('ScienceCtrl', function($scope, $stateParams, $http) {
@@ -129,8 +219,24 @@ angular.module('starter.controllers', ['ngCordova'])
                 $http.get("http://magazinr.herokuapp.com/articles/" + id).
                     success(function(data) {
                         $scope.article = data.article.content;
+                        $scope.id = data.article.id;
+                        $scope.similarId = data.article.article1;
+                        $scope.lessSimilarId = data.article.article2;
+                        $scope.wildCardId = data.article.article3;
                         $scope.title = data.article.short_title;
+                        $scope.section = data.article.section;
                     });
             });
+        $scope.getArticle = function(id){
+            $http.get("http://magazinr.herokuapp.com/articles/" + id).
+                success(function(data){
+                    $scope.article = data.article.content;
+                    $scope.id = data.article.id;
+                    $scope.similarId = data.article.article1;
+                    $scope.lessSimilarId = data.article.article2;
+                    $scope.wildCardId = data.article.article3;
+                    $scope.title = data.article.short_title;
+                    $scope.section = data.article.section;
+                });
+        };
     })
-
